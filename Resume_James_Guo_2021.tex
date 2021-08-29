@@ -1,0 +1,176 @@
+\documentclass{article}
+\usepackage[cm]{fullpage}
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{breaklinks=true,%
+pagecolor=white,%
+colorlinks=true,%
+linkcolor=cyan,%
+urlcolor=MyDarkBlue}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.0,0.45}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatting parameters  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\tabin}
+\setlength{\tabin}{1em}
+\newlength{\secsep}
+\setlength{\secsep}{0.1cm}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+\definecolor{contactgray}{gray}{0.3}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Template Definitions  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\lineunder}{\vspace*{-8pt} \\ \hspace*{-6pt} \hrulefill \\ \vspace*{-15pt}}
+\newcommand{\name}[1]{\begin{center}\textsc{\Huge#1}\\\end{center}}
+\newcommand{\program}[1]{\begin{center}\textsc{#1}\end{center}}
+\newcommand{\contact}[1]{\begin{center}\color{contactgray}{\small#1}\end{center}}
+
+\newenvironment{tabbedsection}[1]{
+  \begin{list}{}{
+      \setlength{\itemsep}{0pt}
+      \setlength{\labelsep}{0pt}
+      \setlength{\labelwidth}{0pt}
+      \setlength{\leftmargin}{\tabin}
+      \setlength{\rightmargin}{\tabin}
+      \setlength{\listparindent}{0pt}
+      \setlength{\parsep}{0pt}
+      \setlength{\parskip}{0pt}
+      \setlength{\partopsep}{0pt}
+      \setlength{\topsep}{#1}
+    }
+  \item[]
+}{\end{list}}
+
+\newenvironment{nospacetabbing}{
+    \begin{tabbing}
+}{\end{tabbing}\vspace{-1.2em}}
+
+\newenvironment{resume_header}{}{\vspace{0pt}}
+
+
+\newenvironment{resume_section}[1]{
+  \filbreak
+  \vspace{2\secsep}
+  \textsc{\large#1}
+  \lineunder
+  \begin{tabbedsection}{\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{resume_subsection}[2][]{
+  \textbf{#2} \hfill{\footnotesize #1} \par
+  \begin{tabbedsection}{0.5\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{subitems}{
+  \renewcommand{\labelitemi}{-}
+  \begin{itemize}
+      \setlength{\labelsep}{1em}
+}{\end{itemize}}
+
+\newenvironment{resume_employer}[4]{
+  \vspace{\secsep}
+  \textbf{#1} \hfill{\footnotesize#3} \\
+  \indent {\small #2} \hfill{\footnotesize(#4)} \par
+  \begin{tabbedsection}{0pt}
+  \begin{subitems}
+}{\end{subitems}\end{tabbedsection}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Start Document     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{resume_header}
+\name{James Guo}
+\program{UCLA School of Engineering and Applied Sciences -- Computer Science Major}
+\contact{jamesg6197@gmail.com \hspace{2cm} 573-818-4468 \hspace{2cm}https://github.com/jamesg6197}
+\end{resume_header}
+
+\begin{resume_section}{About Me}
+  \begin{nospacetabbing}
+
+  \textbf{Programming Languages}  \=  Python, C/C++, Java, Swift, SQL, Git, Bash, React/JS, \LaTeX\\*
+  \textbf{Languages} \> Fluent in Chinese; Conversational Proficiency in Spanish\\*
+  \textbf{Technologies} \> Emacs, Linux, Tensorflow, VSCode, Kubernetes, Microsoft Office\\*
+  \textbf{Interests} \> Basketball, Boxing, Poker, Cooking\\*
+  \end{nospacetabbing}
+
+\end{resume_section}
+
+\begin{resume_section}{Work Experience}
+\begin{resume_employer}{iHerb, LLC}{Machine Learning Engineer Intern}{Irvine, CA}{June 2021 -- Present}
+  \item Used Tensorflow graph freezing and concrete functions to cut all models prediction time by 75 percent
+  \item Developed and released pattern matching, categorization, and flagging packages for product reviews
+  \item Tested VertexAI NNs for demand forecasting against internally-made Random Forest classifiers
+  \end{resume_employer}
+  
+  \begin{resume_employer}{UCLA Anderson School of Management}{Data Analyst and Research Assistant, Political Finance}{Los Angeles, CA}{November 2020 -- June 2021}
+    \item Created and implemented algorithm associating schools with ideology scores based on political donations
+    \item Scraped Wikipedia using Python to create  a web app database linking school biographies and ideologies
+    \item Cleaned data using fuzzy logic to fix discrepancies in respondent answers in FEC Database 
+  \end{resume_employer}
+  
+  \begin{resume_employer}{The Boeing Corporation}{Software Engineering Intern, Satellite Systems}{El Segundo, CA}{June 2019/2020 -- August 2019/2020}
+    \item Wrote Python application to automate the analysis of employee management excel files for each satellite 
+    \item Used Docker to containerize and generate environment for employee management application
+    \item Created a 3-month schedule with goals and deadlines to solve a payload design issue on a campus project
+  \end{resume_employer}
+\end{resume_section}
+
+\begin{resume_section}{Competitions and Personal Projects}
+  \begin{resume_subsection}[(May 2021)]{Stock-Ed}
+  \begin{subitems}
+    \item Worked in a team to develop a Stock Trading Game and Education Web-App using React and NodeJS
+    \item Wrote back-end code to develop retrieve cloud data, as well as handle stock trading and portfolio logic
+    \item Used Figma to design Web-App layout
+    \end{subitems}
+  \end{resume_subsection}
+
+  \begin{resume_subsection}[(April 2021)]{Sandia National Laboratories Space Blimp Hackathon}
+  \begin{subitems}
+    \item Participated in team of three to compete against West Coast schools and win 2nd place in ML/NLP challenge
+    \item Worked on tracking algorithms matching real vs fake space blimps to locations based on movement constraints
+    \item Helped develop an image processing algorithm to locate space blimps within satellite camera snapshots.
+    \end{subitems}
+  \end{resume_subsection}
+
+  \begin{resume_subsection}[(November 2020)]{Rush}
+  \begin{subitems}
+    \item Developed iOS App allowing students/alumni to review UCLA Organizations, Greek Life, and Clubs
+    \item Used SwiftUI to build Full-Stack with Authentication, Firebase Data and Image Storage and User Interface
+    \item Networked and partnered with organizations and students to increase app outreach and usage
+    \end{subitems}
+  \end{resume_subsection}
+
+  \begin{resume_subsection}[(August 2020)]{Ext2 File System}
+    \begin{subitems}
+        \item Designed and implemented personal malloc function in C using buddy segregated lists
+        \item Obtained 98\% efficiency when compared with C STL malloc function
+        \item Programmed multiple back-testing features analyzing function speed, storage capability, and accuracy
+    \end{subitems}
+  \end{resume_subsection}
+  \end{resume_section}
+
+\begin{resume_section}{Education }
+  \begin{resume_employer}{University of California, Los Angeles}{B.S. Computer Science}{Los Angeles, CA}{Expected Graduation: June 2023}
+      \item GPA: 4.0
+      \item Organizations:  Association of Computing Machinery, Delta Sigma Pi
+      \item Coursework: Algorithms and Complexity, Artificial Intelligence, Formal Languages, Operating Systems, Software Construction, Data Structures, Computer Organization, Discrete Math
+  \end{resume_employer}
+\end{resume_section}
+
+\end{document}
